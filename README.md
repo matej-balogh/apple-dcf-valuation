@@ -13,6 +13,8 @@ with an own beta regression and a sensitivity analysis. Data as of November 2026
 | Terminal growth | 3.0% |
 | Terminal value share of EV | 72% |
 | Value range (WACC 6–12%, g 1–4%) | USD 92 – 453 |
+| Implied terminal growth (reverse DCF) | ≈ 8.0% |
+| Implied WACC at g = 3% (reverse DCF) | ≈ 5.7% |
 
 ![Sensitivity heatmap](sensitivity.png)
 
@@ -29,6 +31,7 @@ substantially higher growth than this forecast assumes.
 5. **Terminal value:** Gordon growth model
 6. **Value per share:** enterprise value → equity value (− debt + cash + investments) → per share
 7. **Sensitivity analysis:** value per share across WACC and terminal growth, shown as a heatmap
+8. **Reverse DCF:** solves for the terminal growth rate and WACC implied by the market price (`brentq` root-finding)
 
 ## Key assumptions
 
@@ -48,12 +51,15 @@ substantially higher growth than this forecast assumes.
   this uncertainty alone moves the cost of equity between ~8.9% and ~11.9%.
 - **The valuation is most sensitive to the WACC,** and the effect of terminal growth increases sharply
   as the WACC falls, because the terminal value depends on the gap between them.
+- **The market price implies** ~8% growth forever or a ~5.7% WACC; neither is plausible alone, suggesting the market
+  expects strong growth for longer than a 5-year forecast captures.
 
 ## Limitations and next steps
 
 - Yahoo Finance data is unofficial and may contain gaps; results change as new data is downloaded.
 - Single-scenario forecast; planned extensions: **reverse DCF** (growth implied by the market price)
   and **Monte Carlo simulation** of the key assumptions.
+- Single-scenario forecast; planned extensions: a multi-stage growth model and a **Monte Carlo simulation** of the key assumptions.
 
 ## How to run
 
